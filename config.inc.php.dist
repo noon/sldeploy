@@ -1,0 +1,41 @@
+<?php
+// default sldeploy configuration file
+
+// email for notification
+$conf['email_to'] = 'your@email.de';
+
+// parent directory of projects
+$conf['www_path'] = '/www';
+
+// scm directory with system repository (git or svn)
+$conf['system_source'] = "/root/system_source";
+
+// Restart services with system deploy
+$conf['restart_services'] = 'apache2 mysql';
+
+// Run Drupal updates
+//$conf['drush'] = '/www/drush/drush -r /www/htdocs -l http://www.mydomain.de -u 1';
+// or $conf['drush']['firstdrush'] = '/www/drush/drush -r /www/htdocs -l http://www.mydomain.de -u 1';
+
+# Repository deployments
+$conf['deploy_svn'][] = '/usr/share/php5/ZendFramework';
+
+# Init a new system environment
+$conf['init-system']['dirs'][] = '/tmp/dir1';
+$conf['init-system']['dirs'][] = '/tmp/dir2';
+$conf['init-system']['dirs'][] = '/tmp/dir3';
+
+$conf['init-system']['packages'] = 'htop vim git-core wget';
+
+# Reset database
+$conf['reset-db']['mode']           = 'local'; // local or remote
+$conf['reset-db']['db']             = 'my_db';
+$conf['reset-db']['local_sql']      = '/mnt/hgfs/Downloads/my_db.sql';
+
+$conf['reset-db']['remote_sql']     = 'my_db.sql';
+$conf['reset-db']['remote_dir']     = '/tmp';
+$conf['reset-db']['remote_user']    = 'user_with_ssh_access';
+$conf['reset-db']['remote_server']  = 'my-remote-server.com';
+
+$conf['reset-db']['post_commands'][] = '/usr/local/bin/drush cache clear';
+$conf['reset-db']['post_commands'][] = '/usr/local/bin/drush cron';

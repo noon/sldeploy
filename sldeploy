@@ -1,0 +1,21 @@
+#!/usr/bin/php
+<?php
+error_reporting(E_ALL);
+
+require_once 'lib/sldeploy.class.php';
+require_once 'lib/config_default.inc.php';
+
+if (file_exists('config.inc.php')) {
+    require 'config.inc.php';
+}
+elseif (file_exists($_SERVER['HOME']. '/.sldeploy.inc.php')) {
+    require $_SERVER['HOME']. '/.sldeploy.inc.php';
+}
+elseif (file_exists('/etc/sldeploy.inc.php')) {
+    require '/etc/sldeploy.inc.php';
+} else {
+    die("Configuration file config.inc.php missing!\n");
+}
+
+$sldeploy = new sldeploy($conf);
+exit($sldeploy->run());

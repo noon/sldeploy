@@ -1,0 +1,19 @@
+sldeploy README
+
+Requirements
+============
+
+- PHP 5.2.x
+
+
+Installation
+============
+
+Copy config.inc.php.dist to config.inc.php (or to /etc/sldeploy.inc.php). Change config.inc.php
+to fit your system and project settings.
+
+
+Usage
+=====
+
+Run sldeploy -h for more information
